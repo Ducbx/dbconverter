@@ -1,0 +1,77 @@
+User requirement -> requirement analysis -> use cases (use case diagram) -> design (class diagram, activity diagram, sequence diagram)
+-> implementation (+ unit test) -> test (functional test, system test, acceptance test) -> deployment -> maintenance
+
+1. Database
+ - table, field, data type,..
+ - constraints, foreign keys,..
+ - triggers
+ - views
+ - procedures
+ ...
+
+2. Domain data
+ - input: sqlite database file
+ - output: access database file
+
+3. System design
+
+mysql ---[Read input]  ==> [Database data structure] ==> [Write output]--- access
+ sql___|								|___mysql
+
+3.1. Database reader
+ - use db driver of input
+ - input: input db file
+ - output: database data structure
+
+3.2. Database data structure
+ - table, field, data type,..
+   struct Field{
+   	string name;
+	string type;
+	bool isPrimaryKey;
+   };
+   struct Constraint{
+	string name;   
+        //
+   };   
+   struct Table{
+	string name;
+	List<Field> fields;
+	List<Constraint> contraints; // foreign key
+   };
+
+ - triggers
+   struct Trigger{
+    	string name;
+        //...
+   };
+
+ - views
+   struct View{
+    	string name;
+        //...
+   };
+
+ - procedures
+   struct Procedure{
+    	string name;
+        //...
+   };
+
+List<Table> tables;
+List<Trigger> triggers;
+List<View> views;
+List<Procedure> procedures;
+
+3.3. Write output
+ - use db driver of output
+ - input: database data structure
+ - output: db output file
+
+4. Convert sqlite to access
+4.1. Sqlite
+
+4.2. Access
+
+
+5. Create installer
