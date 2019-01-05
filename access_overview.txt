@@ -1,0 +1,21 @@
+1. Table and field properties
+- A table’s properties are set in the table's property sheet
+- A field’s property defines an aspect of the field's behavior
+- Every field has a data type which defines the kind of information stored in the field.
+- To connect the data stored in different tables, you would create relationships. 
+A relationship is a logical connection between two tables that have a common field.
+
+2. Names of fields, controls, and objects in Microsoft Access desktop databases:
+- Can be up to 64 characters long.
+- Can include any combination of letters, numbers, spaces, and special characters except a period (.), an exclamation point (!), an accent grave (`), and brackets ([ ]).
+- Can't begin with leading spaces.
+- Can't include control characters (ASCII values 0 through 31).
+- Can't include a double quotation mark (") in table, view, or stored procedure names in a Microsoft Access project.
+
+3. primary key
+- It uniquely identifies each row
+- It is never empty or null — it always contains a value
+- The values it contains rarely (ideally, never) change
+
+//follow manual of access: understand queries
+
