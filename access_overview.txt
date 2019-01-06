@@ -17,5 +17,69 @@ A relationship is a logical connection between two tables that have a common fie
 - It is never empty or null — it always contains a value
 - The values it contains rarely (ideally, never) change
 
-//follow manual of access: understand queries
+4. Data types: refer sql data type: https://www.w3schools.com/sql/sql_datatypes.asp	
+-Text	
+-Memo	
+-Byte	
+-Integer	
+-Long	
+-Single	
+-Double	
+-Currency	
+-AutoNumber	
+-Date/Time	
+-Yes/No	
+-Ole Object	
+-Hyperlink	 
+-Lookup Wizard	
+
+5. List of constraints:
+NOT NULL - Ensures that a column cannot have a NULL value
+UNIQUE - Ensures that all values in a column are different
+PRIMARY KEY - A combination of a NOT NULL and UNIQUE. Uniquely identifies each row in a table
+FOREIGN KEY - Uniquely identifies a row/record in another table
+CHECK - Ensures that all values in a column satisfies a specific condition
+DEFAULT - Sets a default value for a column when no value is specified
+INDEX - Used to create and retrieve data from the database very quickly
+
+6. Syntax:https://www.w3schools.com/
+- Create DB: CREATE DATABASE databasename;
+- Drop DB: DROP DATABASE testDB;
+- Create table: 
+CREATE TABLE table_name (
+    column1 datatype,
+    column2 datatype,
+    column3 datatype,
+   ....
+);
+- Create table using another table:
+CREATE TABLE new_table_name AS
+    SELECT column1, column2,...
+    FROM existing_table_name
+    WHERE ....;
+- alter table: 
+ALTER TABLE table_name ADD column_name datatype;
+ALTER TABLE table_name DROP COLUMN column_name;
+ALTER TABLE table_name ALTER COLUMN column_name datatype; (MS Access)
+-constraints: 
+CREATE TABLE table_name (
+    column1 datatype constraint,
+    column2 datatype constraint,
+    column3 datatype constraint,
+    ....
+);
+- constraints UNIQUE in MS Access: 
+CREATE TABLE Persons (
+    ID int NOT NULL UNIQUE,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Age int
+);
+CREATE TABLE Persons (
+    ID int NOT NULL,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Age int,
+    CONSTRAINT UC_Person UNIQUE (ID,LastName)
+);
 
