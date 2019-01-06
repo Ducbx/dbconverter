@@ -1,23 +1,18 @@
-1. Table and field properties
-- A table’s properties are set in the table's property sheet
-- A field’s property defines an aspect of the field's behavior
-- Every field has a data type which defines the kind of information stored in the field.
-- To connect the data stored in different tables, you would create relationships. 
-A relationship is a logical connection between two tables that have a common field.
+https://www.tutorialspoint.com/ms_access/
+https://www.w3schools.com/sql/sql_datatypes.asp
+sql keywords: https://www.w3schools.com/sql/sql_ref_keywords.asp
+MS Access function: https://www.w3schools.com/sql/sql_ref_msaccess.asp
+DAO DB class: https://docs.microsoft.com/en-us/cpp/mfc/reference/cdaodatabase-class?view=vs-2017
 
-2. Names of fields, controls, and objects in Microsoft Access desktop databases:
+1. Namming rules of fields, controls, and objects in MS Access
 - Can be up to 64 characters long.
 - Can include any combination of letters, numbers, spaces, and special characters except a period (.), an exclamation point (!), an accent grave (`), and brackets ([ ]).
 - Can't begin with leading spaces.
 - Can't include control characters (ASCII values 0 through 31).
 - Can't include a double quotation mark (") in table, view, or stored procedure names in a Microsoft Access project.
 
-3. primary key
-- It uniquely identifies each row
-- It is never empty or null — it always contains a value
-- The values it contains rarely (ideally, never) change
-
-4. Data types: refer sql data type: https://www.w3schools.com/sql/sql_datatypes.asp	
+2. Data types: 
+List of data types in MS Access
 -Text	
 -Memo	
 -Byte	
@@ -33,7 +28,7 @@ A relationship is a logical connection between two tables that have a common fie
 -Hyperlink	 
 -Lookup Wizard	
 
-5. List of constraints:
+3. List of constraints:
 NOT NULL - Ensures that a column cannot have a NULL value
 UNIQUE - Ensures that all values in a column are different
 PRIMARY KEY - A combination of a NOT NULL and UNIQUE. Uniquely identifies each row in a table
@@ -42,9 +37,11 @@ CHECK - Ensures that all values in a column satisfies a specific condition
 DEFAULT - Sets a default value for a column when no value is specified
 INDEX - Used to create and retrieve data from the database very quickly
 
-6. Syntax:https://www.w3schools.com/
+4. Syntax for create form:
 - Create DB: CREATE DATABASE databasename;
+
 - Drop DB: DROP DATABASE testDB;
+
 - Create table: 
 CREATE TABLE table_name (
     column1 datatype,
@@ -52,15 +49,18 @@ CREATE TABLE table_name (
     column3 datatype,
    ....
 );
+
 - Create table using another table:
 CREATE TABLE new_table_name AS
     SELECT column1, column2,...
     FROM existing_table_name
     WHERE ....;
+
 - alter table: 
 ALTER TABLE table_name ADD column_name datatype;
 ALTER TABLE table_name DROP COLUMN column_name;
 ALTER TABLE table_name ALTER COLUMN column_name datatype; (MS Access)
+
 -constraints: 
 CREATE TABLE table_name (
     column1 datatype constraint,
@@ -68,6 +68,7 @@ CREATE TABLE table_name (
     column3 datatype constraint,
     ....
 );
+
 - constraints UNIQUE in MS Access: 
 CREATE TABLE Persons (
     ID int NOT NULL UNIQUE,
@@ -83,3 +84,72 @@ CREATE TABLE Persons (
     CONSTRAINT UC_Person UNIQUE (ID,LastName)
 );
 
+- constraint primary key in MS Access:
+CREATE TABLE Persons (
+    ID int NOT NULL PRIMARY KEY,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Age int
+);
+CREATE TABLE Persons (
+    ID int NOT NULL,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Age int,
+    CONSTRAINT PK_Person PRIMARY KEY (ID,LastName)
+);
+ALTER TABLE Persons ADD PRIMARY KEY (ID);
+- constraint Foreign key in MS Access:
+CREATE TABLE Orders (
+    OrderID int NOT NULL PRIMARY KEY,
+    OrderNumber int NOT NULL,
+    PersonID int FOREIGN KEY REFERENCES Persons(PersonID)
+);
+
+-constraint Check in MS Access (condition of value)
+CREATE TABLE Persons (
+    ID int NOT NULL,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Age int CHECK (Age>=18)
+);
+
+- constraint default in MS Access: 
+CREATE TABLE Orders (
+    ID int NOT NULL,
+    OrderNumber int NOT NULL,
+    OrderDate date DEFAULT GETDATE()
+);
+ALTER TABLE Persons ALTER COLUMN City SET DEFAULT 'Sandnes';
+
+- Create index:
+CREATE INDEX index_name ON table_name (column1, column2, ...);
+CREATE UNIQUE INDEX index_name ON table_name (column1, column2, ...);
+
+- auto increment fields in MS Access:
+CREATE TABLE Persons (
+    ID Integer PRIMARY KEY AUTOINCREMENT,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Age int
+);
+
+- create views: 
+CREATE VIEW view_name AS
+SELECT column1, column2, ...
+FROM table_name
+WHERE condition;
+
+5. Syntax to get info:
+- Select : 
+SELECT column1, column2, ... FROM table_name;
+SELECT * FROM table_name;
+- select distinct: SELECT DISTINCT column1, column2, ... FROM table_name;
+
+6. Syntax to insert data:
+- Insert into:
+INSERT INTO table_name (column1, column2, column3, ...) VALUES (value1, value2, value3, ...);
+INSERT INTO table_name VALUES (value1, value2, value3, ...);
+
+7. Note:
+Access dont have trigger

@@ -1,0 +1,72 @@
+https://www.tutorialspoint.com/sqlite/sqlite_data_types.htm
+https://www.w3resource.com/sqlite/sqlite-data-types.php
+
+
+1. data type of sqlite
+- NULL
+- INTEGER	
+- REAL	
+- TEXT	
+- BLOB
+
+2. constrant in sqlite:
+NOT NULL Constraint - Ensures that a column cannot have NULL value.
+DEFAULT Constraint - Provides a default value for a column when none is specified.
+UNIQUE Constraint - Ensures that all values in a column are different.
+PRIMARY Key - Uniquely identifies each row/record in a database table.
+CHECK Constraint - Ensures that all values in a column satisfies certain conditions.
+FOREIGN KEY
+
+3. syntax:
+- Create table:
+CREATE TABLE database_name.table_name(
+   column1 datatype PRIMARY KEY(one or more columns),
+   column2 datatype,
+   column3 datatype,
+   .....
+   columnN datatype
+);
+
+- insert query:
+- select query:
+SELECT column1, column2, columnN FROM table_name;
+SELECT * FROM table_name;
+
+- constrant: https://www.tutorialspoint.com/sqlite/sqlite_constraints.htm
+
+-Trigger: https://www.tutorialspoint.com/sqlite/sqlite_triggers.htm
+CREATE TRIGGER trigger_name [BEFORE|AFTER] event_name 
+ON table_name
+BEGIN
+ -- Trigger logic goes here....
+END;
+
+- Index: 
+CREATE INDEX index_name ON table_name;
+CREATE INDEX index_name ON table_name (column_name);
+CREATE UNIQUE INDEX index_name on table_name (column_name);
+
+-create view:
+CREATE [TEMP | TEMPORARY] VIEW view_name AS
+SELECT column1, column2.....
+FROM table_name
+WHERE [condition];
+
+4. Sqlite with C++:
+https://www.tutorialspoint.com/sqlite/sqlite_c_cpp.htm
+https://www.sqlite.org/cintro.html
+sqlite3 ? The database connection object. Created by sqlite3_open() and destroyed by sqlite3_close().
+sqlite3_stmt ? The prepared statement object. Created by sqlite3_prepare() and destroyed by sqlite3_finalize().
+sqlite3_open() ? Open a connection to a new or existing SQLite database. The constructor for sqlite3.
+sqlite3_prepare() ? Compile SQL text into byte-code that will do the work of querying or updating the database. The constructor for sqlite3_stmt.
+sqlite3_bind() ? Store application data into parameters of the original SQL.
+sqlite3_step() ? Advance an sqlite3_stmt to the next result row or to completion.
+sqlite3_column() ? Column values in the current result row for an sqlite3_stmt.
+sqlite3_finalize() ? Destructor for sqlite3_stmt.
+sqlite3_close() ? Destructor for sqlite3.
+sqlite3_exec() ? A wrapper function that does sqlite3_prepare(), sqlite3_step(), sqlite3_column(), and sqlite3_finalize() for a string of one or more SQL statements.
+
+Note:
+Access supports stored procedure, while SQLite doesn’t have that concept.
+https://en.wikipedia.org/wiki/Comparison_of_relational_database_management_systems
+
