@@ -28,6 +28,9 @@ List of data types in MS Access
 -Hyperlink	 
 -Lookup Wizard	
 
+==> double
+
+
 3. List of constraints:
 NOT NULL - Ensures that a column cannot have a NULL value
 UNIQUE - Ensures that all values in a column are different
