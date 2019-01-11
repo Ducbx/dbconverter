@@ -52,6 +52,16 @@ SELECT column1, column2.....
 FROM table_name
 WHERE [condition];
 
+
+CREATE TABLE artist(
+  artistid    INTEGER PRIMARY KEY, 
+  artistname  TEXT
+);
+CREATE TABLE track(
+  trackid     INTEGER,
+  trackname   TEXT, 
+  trackartist INTEGER REFERENCES artist(artistid) ON UPDATE CASCADE
+);
 4. Sqlite with C++:
 https://www.tutorialspoint.com/sqlite/sqlite_c_cpp.htm
 https://www.sqlite.org/cintro.html

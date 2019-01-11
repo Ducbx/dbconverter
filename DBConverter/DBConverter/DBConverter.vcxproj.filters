@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="SQLite">
+      <UniqueIdentifier>{9b1c5811-e646-46b1-94f0-a75b9379f8d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MS_Access">
+      <UniqueIdentifier>{523ed2b2-c938-4bfa-9f67-94410bbd8ae5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Model">
+      <UniqueIdentifier>{87faf89f-bb60-46e6-bfbe-6f79e003584a}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="DBConverter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DBConverterDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseDbReader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AccessReader.h">
+      <Filter>MS_Access</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseDbWriter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SQLiteReader.h">
+      <Filter>SQLite</Filter>
+    </ClInclude>
+    <ClInclude Include="AccessWriter.h">
+      <Filter>MS_Access</Filter>
+    </ClInclude>
+    <ClInclude Include="SQLiteWriter.h">
+      <Filter>SQLite</Filter>
+    </ClInclude>
+    <ClInclude Include="Record.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Table.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Field.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Index.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Trigger.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="View.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Procedure.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Constraint.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="DatabaseStruct.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="SQLiteDatabase.h">
+      <Filter>SQLite</Filter>
+    </ClInclude>
+    <ClInclude Include="sqlite3.h">
+      <Filter>SQLite</Filter>
+    </ClInclude>
+    <ClInclude Include="SQLiteDataStruct.h">
+      <Filter>SQLite</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="DBConverter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DBConverterDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AccessReader.cpp">
+      <Filter>MS_Access</Filter>
+    </ClCompile>
+    <ClCompile Include="SQLiteReader.cpp">
+      <Filter>SQLite</Filter>
+    </ClCompile>
+    <ClCompile Include="AccessWriter.cpp">
+      <Filter>MS_Access</Filter>
+    </ClCompile>
+    <ClCompile Include="SQLiteWriter.cpp">
+      <Filter>SQLite</Filter>
+    </ClCompile>
+    <ClCompile Include="SQLiteDatabase.cpp">
+      <Filter>SQLite</Filter>
+    </ClCompile>
+    <ClCompile Include="sqlite3.c">
+      <Filter>SQLite</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="DBConverter.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\DBConverter.rc2">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\DBConverter.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+</Project>
