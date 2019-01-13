@@ -7,7 +7,7 @@ public:
 	SQLiteReader();
 	~SQLiteReader();
 
-	virtual bool readStructure(DatabaseStruct &);
+	virtual bool readStructure(const char* path, DatabaseStruct&);
 	virtual bool readData(Table);
 };
 

@@ -5,12 +5,18 @@
 struct SQLiteDataStruct
 {
 	std::vector<std::string> fields;
-	std::vector<std::vector<std::string>> records;
+	std::vector<std::vector<std::string>> data;
 	
+	void reset()
+	{
+		data.clear();
+		fields.clear();
+	}
+
 	std::string toString()
 	{
 		std::string result = "Fields = (";
-		int i = 0;
+		size_t i = 0;
 		for (i = 0; i < fields.size()-1; i++)
 		{
 			result += fields.at(i);
@@ -22,11 +28,11 @@ struct SQLiteDataStruct
 		}
 		result += "); Record = (";
 
-		int j = 0;
-		int k = 0;
-		for (int j = 0; j < records.size(); j++)
+		size_t j = 0;
+		size_t k = 0;
+		for (j = 0; j < data.size(); j++)
 		{
-			std::vector<std::string>& record = records[j];
+			std::vector<std::string>& record = data[j];
 			std::string temp = "(";
 			for (k = 0; k < record.size() - 1; k++)
 			{

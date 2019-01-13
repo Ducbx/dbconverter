@@ -9,9 +9,9 @@ public:
 	SQLiteDatabase();
 	~SQLiteDatabase();
 
-	bool openDb(char* pathName);
-	bool closeDb();
-	bool executeQuery(char* query, SQLiteDataStruct* data);
+	bool openDb(const char* pathName);
+	void closeDb();
+	void executeQuery(const char* query, SQLiteDataStruct* data);
 
 	static int callback(void* userContext, int columnCount, char** results, char** fields); 
 private:
