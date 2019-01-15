@@ -4,11 +4,13 @@
 
 SQLiteReader::SQLiteReader()
 {
+	//???
 }
 
 
 SQLiteReader::~SQLiteReader()
 {
+	//???
 }
 
 //Get all table and table's form info
@@ -30,8 +32,15 @@ bool SQLiteReader::readStructure(const char* path, DatabaseStruct& data_info)
 	// with each table name, get info of all fields
 	for (size_t i = 0; i < tableNames->data.size(); i++)
 	{
-		Table *std_table = new Table();											//push info to data struct format
-		std_table->name = tableNames->data[i][1];								//push info to data struct format
+		//Create and save info of each table
+		Table *std_table = new Table();																			
+		Constraint* std_const = new Constraint();
+		View* std_view = new View();
+		Trigger* std_trigger = new Trigger();
+		Procedure* std_procedure = new Procedure();
+		Index* std_index = new Index();
+
+		std_table->name = tableNames->data[i][1];
 
 		SQLiteDataStruct* sqliteFields = new SQLiteDataStruct();
 		std::string str = "PRAGMA table_info('" + tableNames->data[i][1] + "');";
@@ -48,14 +57,13 @@ bool SQLiteReader::readStructure(const char* path, DatabaseStruct& data_info)
 		};
 		std::vector<SqliteTableField*> tableFields;
 		// extract tablefield from fields
-		for (int row = 0; row<sqliteFields->data.size(); row++)
+		for (size_t row = 0; row<sqliteFields->data.size(); row++)
 		{
-			Field* std_field = new Field();										//push info to data struct format
-			std::string *field;
+			Field* std_field = new Field();										
 			SqliteTableField* tblField = new SqliteTableField();
-			for (int col = 0; col<sqliteFields->data[row].size(); col++)
+			for (size_t col = 0; col<sqliteFields->data[row].size(); col++)
 			{
-				std::string& colName = sqliteFields->fields[col];
+				std::string& colName = sqliteFields->columns[col];
 				std::string& value = sqliteFields->data[row][col];
 				if (colName == "name")
 				{
@@ -69,7 +77,8 @@ bool SQLiteReader::readStructure(const char* path, DatabaseStruct& data_info)
 				}
 				if (colName == "dflt_value")
 				{
-					tblField->defaultValue = value;
+					//type cast dflt_value to dataType ???
+					//tblField->defaultValue = value;
 				}
 				if (colName == "notnull")
 				{
@@ -84,6 +93,21 @@ bool SQLiteReader::readStructure(const char* path, DatabaseStruct& data_info)
 			}
 			tableFields.push_back(tblField);
 		}
+		//list down all the indexes database : sqlite> SELECT * FROM sqlite_master WHERE type = 'index';
+		//refer: https://www.tutorialspoint.com/sqlite/sqlite_indexes.htm
+
+		//list down all the triggers from sqlite_master table: sqlite> SELECT name FROM sqlite_master WHERE type = 'trigger';
+		//sqlite> SELECT name FROM sqlite_master WHERE type = 'trigger' AND tbl_name = 'COMPANY';
+
+		//SELECT name from sqlite_master WHERE type = 'view';
+		//SELECT name FROM sqlite_master WHERE type = 'view' and sql LIKE "%_tablename_%";
+
+		data_info.tables.push_back(std_table);
+		data_info.constraints.push_back(std_const);
+		data_info.indexs.push_back(std_index);
+		data_info.procedures.push_back(std_procedure);
+		data_info.triggers.push_back(std_trigger);
+		data_info.views.push_back(std_view);
 	}
 
 	return false;

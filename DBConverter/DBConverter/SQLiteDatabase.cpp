@@ -53,11 +53,11 @@ int SQLiteDatabase::callback(void* userContext, int columnCount, char** results,
 	if (data)
 	{
 		//get colName only once time
-		if (data->fields.empty())
+		if (data->columns.empty())
 		{
 			for (int i = 0; i < columnCount; i++)
 			{
-				data->fields.push_back(std::string(fields[i]));
+				data->columns.push_back(std::string(fields[i]));
 			}
 		}
 		// Append record to the dataStruct

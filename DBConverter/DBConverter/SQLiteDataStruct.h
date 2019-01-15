@@ -4,27 +4,27 @@
 
 struct SQLiteDataStruct
 {
-	std::vector<std::string> fields;
+	std::vector<std::string> columns;
 	std::vector<std::vector<std::string>> data;
 	
 	void reset()
 	{
 		data.clear();
-		fields.clear();
+		columns.clear();
 	}
 
 	std::string toString()
 	{
 		std::string result = "Fields = (";
 		size_t i = 0;
-		for (i = 0; i < fields.size()-1; i++)
+		for (i = 0; i < columns.size() - 1; i++)
 		{
-			result += fields.at(i);
+			result += columns.at(i);
 			result += ", ";
 		}
-		if (fields.size() - 1 == i)
+		if (columns.size() - 1 == i)
 		{
-			result += fields.at(i);
+			result += columns.at(i);
 		}
 		result += "); Record = (";
 
