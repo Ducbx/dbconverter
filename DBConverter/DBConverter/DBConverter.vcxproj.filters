@@ -22,6 +22,9 @@
     <Filter Include="Model">
       <UniqueIdentifier>{87faf89f-bb60-46e6-bfbe-6f79e003584a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Utilities">
+      <UniqueIdentifier>{527dbbf9-f2fb-4567-b6c3-2c7c2a7d40a5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -81,9 +84,6 @@
     <ClInclude Include="Procedure.h">
       <Filter>Model</Filter>
     </ClInclude>
-    <ClInclude Include="Constraint.h">
-      <Filter>Model</Filter>
-    </ClInclude>
     <ClInclude Include="DatabaseStruct.h">
       <Filter>Model</Filter>
     </ClInclude>
@@ -95,6 +95,18 @@
     </ClInclude>
     <ClInclude Include="SQLiteDataStruct.h">
       <Filter>SQLite</Filter>
+    </ClInclude>
+    <ClInclude Include="PrimaryKey.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="ForeignKey.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="CommonDefs.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="VectorUtils.h">
+      <Filter>Utilities</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

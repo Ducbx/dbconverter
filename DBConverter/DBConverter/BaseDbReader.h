@@ -5,7 +5,8 @@
 class  BaseDbReader
 {
 public:
-	virtual bool readStructure(DatabaseStruct &) = 0;
+	virtual ~BaseDbReader(){}
+	virtual bool readStructure(DatabaseStruct*) = 0;
 	virtual bool readData(Table) = 0;
 };
 

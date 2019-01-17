@@ -13,8 +13,9 @@ AccessReader::~AccessReader()
 }
 
 //Get all table and form of table
-bool AccessReader::readStructure(const char* path, DatabaseStruct& data_info)
+bool AccessReader::readStructure(const char* path, DatabaseStruct* data_info)
 {
+#if 0
 	//open access DB
 	CDaoDatabase* accessDB = new CDaoDatabase();
 	accessDB->Open((CString)path);
@@ -36,7 +37,7 @@ bool AccessReader::readStructure(const char* path, DatabaseStruct& data_info)
 		//CDaoIndexInfo indexinfo;
 		//TableDef.GetIndexInfo(i1, indexinfo, AFX_DAO_ALL_INFO);
 	}
-
+#endif
 	return false;
 }
 

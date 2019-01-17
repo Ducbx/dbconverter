@@ -1,9 +1,26 @@
 #pragma once
 #include<iostream>
+#include "CommonDefs.h"
 
 struct Field
 {
 	std::string name;
-	std::string dataType;
-	void* pDefaultValue;
+	CommonDataType dataType;
+	std::string defaultValue;
+	int dataSize; // -1 means not set
+	std::string checkCondition;
+	bool isUnique;
+	bool isNotNull;
+	bool isAutoIncrement;
+
+	Field()
+		: name(""),
+		defaultValue(""),
+		dataSize(-1),
+		checkCondition(""),
+		isUnique(false),
+		isNotNull(false),
+		isAutoIncrement(false)
+	{
+	}
 };

@@ -6,6 +6,8 @@
 #include "DBConverter.h"
 #include "DBConverterDlg.h"
 
+#include "SQLiteReader.h"
+
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
@@ -69,6 +71,21 @@ BOOL CDBConverterApp::InitInstance()
 	// TODO: You should modify this string to be something appropriate
 	// such as the name of your company or organization
 	SetRegistryKey(_T("Local AppWizard-Generated Applications"));
+
+
+	////Begin Test////
+
+	SQLiteReader* reader = new SQLiteReader();
+	if (!reader->init("BALLASTSYSTEM"))
+	{
+		printf("Fail to init db reader");
+	}
+
+	DatabaseStruct* dbStruct = new DatabaseStruct();
+	reader->readStructure(dbStruct);
+
+	////End Test////
+
 
 	CDBConverterDlg dlg;
 	m_pMainWnd = &dlg;

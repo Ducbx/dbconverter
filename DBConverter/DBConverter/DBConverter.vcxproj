@@ -104,13 +104,15 @@
     <ClInclude Include="AccessReader.h" />
     <ClInclude Include="AccessWriter.h" />
     <ClInclude Include="BaseDbWriter.h" />
-    <ClInclude Include="Constraint.h" />
+    <ClInclude Include="CommonDefs.h" />
     <ClInclude Include="DatabaseStruct.h" />
     <ClInclude Include="DBConverter.h" />
     <ClInclude Include="DBConverterDlg.h" />
     <ClInclude Include="BaseDbReader.h" />
     <ClInclude Include="Field.h" />
+    <ClInclude Include="ForeignKey.h" />
     <ClInclude Include="Index.h" />
+    <ClInclude Include="PrimaryKey.h" />
     <ClInclude Include="Procedure.h" />
     <ClInclude Include="Record.h" />
     <ClInclude Include="Resource.h" />
@@ -123,6 +125,7 @@
     <ClInclude Include="Table.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Trigger.h" />
+    <ClInclude Include="VectorUtils.h" />
     <ClInclude Include="View.h" />
   </ItemGroup>
   <ItemGroup>
