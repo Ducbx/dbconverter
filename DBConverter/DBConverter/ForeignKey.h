@@ -9,4 +9,17 @@ struct ForeignKey
 	std::string refFieldName;
 	std::string onUpdateAction;
 	std::string onDeleteAction;
+
+	ForeignKey()
+		: name(""),
+		fieldName(""),
+		refTableName(""),
+		refFieldName(""),
+		onUpdateAction(""),
+		onDeleteAction("")
+	{
+	}
 };
+
+
+

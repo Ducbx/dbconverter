@@ -8,7 +8,7 @@ struct Field
 	CommonDataType dataType;
 	std::string defaultValue;
 	int dataSize; // -1 means not set
-	std::string checkCondition;
+	std::string checkCondition;	// check constraint
 	bool isUnique;
 	bool isNotNull;
 	bool isAutoIncrement;

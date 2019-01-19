@@ -38,6 +38,7 @@ void SQLiteReader::readTableInfo(std::vector<Table*>& tableInfos)
 		Table* table = new Table();
 		table->name = tableNames->data[i][0];
 
+		//Get fieldnames, fieldtypes, primary key... in each table
 		SQLiteDataStruct* sqliteFields = new SQLiteDataStruct();
 		std::string str = "PRAGMA table_info('" + tableNames->data[i][0] + "');";
 
@@ -79,9 +80,62 @@ void SQLiteReader::readTableInfo(std::vector<Table*>& tableInfos)
 			}
 			table->fields.push_back(field);
 		}
+		
+		//Get foriegn key for each table
+		SQLiteDataStruct* sqliteForiegnKeys = new SQLiteDataStruct();
+		std::string str1 = "PRAGMA foreign_key_list('" + tableNames->data[i][0] + "');";
+		const char *cstr1 = str1.c_str();
+		m_db->executeQuery(cstr1, sqliteForiegnKeys);
 
+		for (size_t row = 0; row < sqliteForiegnKeys->data.size(); row++)
+		{
+			ForeignKey *foreignKey = new ForeignKey();
+			for (size_t col = 0; col < sqliteForiegnKeys->data[row].size(); col++)
+			{
+				std::string foreignAttribute = sqliteForiegnKeys->columns[col];
+				std::string foreignValue = sqliteForiegnKeys->data[row][col];
+				if (foreignAttribute == "table")
+				{
+					foreignKey->refTableName = foreignValue;
+				}
+				if (foreignAttribute == "from")
+				{
+					foreignKey->refFieldName = foreignValue;
+				}
+				if (foreignAttribute == "to")
+				{
+					foreignKey->fieldName = foreignValue;
+				}
+				if (foreignAttribute == "on_update")
+				{
+					foreignKey->onUpdateAction = foreignValue;
+				}
+				if (foreignAttribute == "on_delete")
+				{
+					foreignKey->onDeleteAction = foreignValue;
+				}
+			}
+			table->foreignKeys.push_back(foreignKey);
+		}
+		
 		tableInfos.push_back(table);
 	}
+}
+void SQLiteReader::readIndexInfo(std::vector<Index*>& indexs)
+{
+
+}
+void SQLiteReader::readProcedureInfo(std::vector<Procedure*>& procedures)
+{
+
+}
+void SQLiteReader::readViewInfo(std::vector<View*>& views)
+{
+
+}
+void SQLiteReader::readTriggerInfo(std::vector<Trigger*>& triggers)
+{
+
 }
 
 bool SQLiteReader::convertType(const std::string &type, CommonDataType &out)
