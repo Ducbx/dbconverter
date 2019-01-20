@@ -1,4 +1,5 @@
 #pragma once
+
 #include "BaseDbReader.h"
 #include "SQLiteDatabase.h"
 #include <iostream>

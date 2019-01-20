@@ -6,5 +6,13 @@ struct Index
 {
 	std::string name;
 	std::string tableName;
-	std::vector<std::string> columnNames;
+	std::vector<std::string> fieldNames;
+	bool isUnique;
+
+	Index()
+		:name(""),
+		tableName(""),
+		isUnique(false)
+	{
+	}
 };

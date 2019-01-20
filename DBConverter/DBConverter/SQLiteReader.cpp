@@ -139,18 +139,92 @@ void SQLiteReader::readForeignKeyInfo(const std::string& tableName, std::vector<
 void SQLiteReader::readIndexInfo(std::vector<Index*>& indexs)
 {
 
+	SQLiteDataStruct *sqliteIndexs = new SQLiteDataStruct();
+	m_db->executeQuery("select * from sqlite_master where type = 'index';", sqliteIndexs);
+
+	for (size_t row = 0; row < sqliteIndexs->data.size(); row++)
+	{
+		Index *index = new Index();
+		for (size_t col = 0; col < sqliteIndexs->data[row].size(); col++)
+		{
+			std::string indexAttribute = sqliteIndexs->columns[col];
+			std::string indexValue = sqliteIndexs->data[row][col];
+			if (indexAttribute == "name")
+			{
+				index->name = indexValue;
+			}
+			if (indexAttribute == "tbl_name")
+			{
+				index->tableName = indexValue;
+			}
+		}
+		indexs.push_back(index);
+	}
+
+	//get fields for each index
+	for (size_t ind = 0; ind < indexs.size(); ind++)
+	{
+		SQLiteDataStruct* sqliteIndexFields = new SQLiteDataStruct();
+		std::string sqlite = "PRAGMA index_info('" + indexs[ind]->name + "');";
+		const char *cstr3 = sqlite.c_str();
+		m_db->executeQuery(cstr3, sqliteIndexFields);
+
+		for (size_t row = 0; row < sqliteIndexFields->data.size(); row++)
+		{
+			for (size_t col = 0; col < sqliteIndexFields->data[row].size(); col++)
+			{
+				std::string colName = sqliteIndexFields->columns[col];
+				std::string value = sqliteIndexFields->data[row][col];
+				if (colName == "name")
+				{
+					indexs[ind]->fieldNames.push_back(value);
+				}
+			}
+		}
+		delete sqliteIndexFields;
+	}
+
+	//check unique
+	SQLiteDataStruct *sqliteIndexUnique = new SQLiteDataStruct();
+	m_db->executeQuery("SELECT name FROM sqlite_master WHERE type = 'index' AND sql like '%UNIQUE%';", sqliteIndexUnique);
+	for (size_t ind = 0; ind < indexs.size(); ind++)
+	{
+		for (size_t row = 0; row < sqliteIndexUnique->data.size(); row++)
+		{
+			if (sqliteIndexUnique->data[row][0] == indexs[ind]->name)
+			{
+				indexs[ind]->isUnique = true;
+			}
+		}
+	}
+
+	delete sqliteIndexs;
+	delete sqliteIndexUnique;
+
 }
+
 void SQLiteReader::readProcedureInfo(std::vector<Procedure*>& procedures)
 {
 
 }
 void SQLiteReader::readViewInfo(std::vector<View*>& views)
 {
+	SQLiteDataStruct *sqliteViews = new SQLiteDataStruct();
+	m_db->executeQuery("select sql from sqlite_master where type = 'view';", sqliteViews);
+	
+	//Handle string to model format
 
+
+	delete sqliteViews;
 }
 void SQLiteReader::readTriggerInfo(std::vector<Trigger*>& triggers)
 {
+	SQLiteDataStruct *sqliteTriggers = new SQLiteDataStruct();
+	m_db->executeQuery("select sql from sqlite_master where type = 'view';", sqliteTriggers);
 
+	//Handle string to model format
+
+	delete sqliteTriggers;
 }
 
 bool SQLiteReader::convertType(const std::string &type, CommonDataType &out)
@@ -186,6 +260,7 @@ bool SQLiteReader::convertType(const std::string &type, CommonDataType &out)
 bool SQLiteReader::readStructure(DatabaseStruct* data_info)
 {
 	readTableInfo(data_info->tables);
+	readIndexInfo(data_info->indexs);
 	return false;
 }
 
