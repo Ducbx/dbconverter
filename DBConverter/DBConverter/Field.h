@@ -12,6 +12,7 @@ struct Field
 	bool isUnique;
 	bool isNotNull;
 	bool isAutoIncrement;
+	bool isPrimaryKey;
 
 	Field()
 		: name(""),
@@ -20,7 +21,8 @@ struct Field
 		checkCondition(""),
 		isUnique(false),
 		isNotNull(false),
-		isAutoIncrement(false)
+		isAutoIncrement(false),
+		isPrimaryKey(false)
 	{
 	}
 };

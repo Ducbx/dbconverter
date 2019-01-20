@@ -15,6 +15,8 @@ public:
 
 private:
 	void readTableInfo(std::vector<Table*>& tableInfos);
+	void readFieldInfo(const std::string& tableName, std::vector<Field*>& fields);
+	void readForeignKeyInfo(const std::string& tableName, std::vector<ForeignKey*>& foreignKeys);
 	void readIndexInfo(std::vector<Index*>& indexs);
 	void readProcedureInfo(std::vector<Procedure*>& procedures);
 	void readViewInfo(std::vector<View*>& views);

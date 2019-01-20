@@ -108,6 +108,9 @@
     <ClInclude Include="VectorUtils.h">
       <Filter>Utilities</Filter>
     </ClInclude>
+    <ClInclude Include="StringUtilities.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DBConverter.cpp">

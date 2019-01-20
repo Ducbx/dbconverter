@@ -10,6 +10,6 @@ struct Table
 	std::string name;
 	std::vector<Field*> fields;
 	std::vector<Record*> records;
-	PrimaryKey primaryKey;
+	//PrimaryKey primaryKey;
 	std::vector<ForeignKey*> foreignKeys;
 };
