@@ -101,8 +101,10 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AccessOutputWriter.h" />
     <ClInclude Include="AccessReader.h" />
     <ClInclude Include="AccessWriter.h" />
+    <ClInclude Include="BaseOutputWriter.h" />
     <ClInclude Include="BaseDbWriter.h" />
     <ClInclude Include="CommonDefs.h" />
     <ClInclude Include="DatabaseStruct.h" />
@@ -112,6 +114,7 @@
     <ClInclude Include="Field.h" />
     <ClInclude Include="ForeignKey.h" />
     <ClInclude Include="Index.h" />
+    <ClInclude Include="OutputStatement.h" />
     <ClInclude Include="PrimaryKey.h" />
     <ClInclude Include="Procedure.h" />
     <ClInclude Include="Record.h" />
@@ -130,6 +133,7 @@
     <ClInclude Include="View.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AccessOutputWriter.cpp" />
     <ClCompile Include="AccessReader.cpp" />
     <ClCompile Include="AccessWriter.cpp" />
     <ClCompile Include="DBConverter.cpp" />

@@ -67,7 +67,7 @@ void AccessReader::readFieldInfo(CDaoTableDef &TableDef, std::vector<Field*>& fi
 		CT2CA pszConvertedAnsiString(fieldinfo.m_strName);			//convert CString to std::string
 		std::string strStd(pszConvertedAnsiString);
 		field->name = strStd;
-		field->dataType = fieldinfo.m_nType;						//call convert data Type func 
+		//field->dataType = fieldinfo.m_nType;						//call convert data Type func 
 
 		
 	}

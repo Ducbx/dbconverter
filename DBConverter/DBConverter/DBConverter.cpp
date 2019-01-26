@@ -7,6 +7,8 @@
 #include "DBConverterDlg.h"
 
 #include "SQLiteReader.h"
+#include "AccessWriter.h"
+#include "OutputStatement.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -84,8 +86,10 @@ BOOL CDBConverterApp::InitInstance()
 	DatabaseStruct* dbStruct = new DatabaseStruct();
 	reader->readStructure(dbStruct);
 
+	OutputStatement *statement = new OutputStatement();
+	AccessWriter* write = new AccessWriter();
+	write->writeStructure(dbStruct, statement);
 	////End Test////
-
 
 	CDBConverterDlg dlg;
 	m_pMainWnd = &dlg;

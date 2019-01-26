@@ -17,7 +17,6 @@ SQLiteReader::~SQLiteReader()
 	}
 }
 
-
 bool SQLiteReader::init(const char* dbPath)
 {
 	if (!m_db || !m_db->openDb(dbPath))
@@ -36,6 +35,10 @@ void SQLiteReader::readTableInfo(std::vector<Table*>& tableInfos)
 
 	for (size_t i = 0; i < tableNames->data.size(); i++)
 	{
+		if (tableNames->data[i][0] == "sqlite_sequence")
+		{
+			continue;
+		}
 		Table* table = new Table();
 		table->name = tableNames->data[i][0];
 
@@ -134,7 +137,6 @@ void SQLiteReader::readForeignKeyInfo(const std::string& tableName, std::vector<
 
 	delete sqliteForiegnKeys;
 }
-
 
 void SQLiteReader::readIndexInfo(std::vector<Index*>& indexs)
 {
