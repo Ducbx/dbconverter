@@ -2,7 +2,7 @@
 #include<iostream>
 #include<vector>
 
-struct OutputStatement
+struct StructureStatement
 {
 	std::vector<std::string> tableStatement;
 	std::vector<std::string> indexStatement;

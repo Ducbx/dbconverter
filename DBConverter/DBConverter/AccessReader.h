@@ -10,7 +10,7 @@ public:
 	~AccessReader();
 
 	virtual bool readStructure(DatabaseStruct* data_info);
-	virtual bool readData(Table);
+	virtual bool readData(const QueryModel& query, std::vector<Record*>& dataList);
 
 	bool init(const char* dbPath);
 

@@ -4,5 +4,5 @@
 
 struct Record
 {
-	std::map<std::string, void*> dataMap;
+	std::map<std::string, std::string> dataMap;
 };

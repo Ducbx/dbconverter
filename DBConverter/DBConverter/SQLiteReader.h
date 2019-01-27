@@ -10,7 +10,7 @@ public:
 	~SQLiteReader();
 
 	virtual bool readStructure(DatabaseStruct*);
-	virtual bool readData(Table);
+	virtual bool readData(const QueryModel& query, std::vector<Record*>& dataList);
 
 	bool init(const char* dbPath);
 

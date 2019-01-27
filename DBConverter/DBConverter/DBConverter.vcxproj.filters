@@ -108,16 +108,22 @@
     <ClInclude Include="StringUtilities.h">
       <Filter>Utilities</Filter>
     </ClInclude>
-    <ClInclude Include="OutputStatement.h">
-      <Filter>Model</Filter>
-    </ClInclude>
     <ClInclude Include="BaseDbWriter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="BaseOutputWriter.h">
+    <ClInclude Include="QueryModel.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseStatementExecutor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="AccessOutputWriter.h">
+    <ClInclude Include="StructureStatement.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="RecordStatement.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="AccessStatementExecutor.h">
       <Filter>MS_Access</Filter>
     </ClInclude>
   </ItemGroup>
@@ -149,7 +155,7 @@
     <ClCompile Include="sqlite3.c">
       <Filter>SQLite</Filter>
     </ClCompile>
-    <ClCompile Include="AccessOutputWriter.cpp">
+    <ClCompile Include="AccessStatementExecutor.cpp">
       <Filter>MS_Access</Filter>
     </ClCompile>
   </ItemGroup>

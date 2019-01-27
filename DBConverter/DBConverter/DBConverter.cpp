@@ -8,7 +8,8 @@
 
 #include "SQLiteReader.h"
 #include "AccessWriter.h"
-#include "OutputStatement.h"
+#include "StructureStatement.h"
+#include "AccessStatementExecutor.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -86,9 +87,14 @@ BOOL CDBConverterApp::InitInstance()
 	DatabaseStruct* dbStruct = new DatabaseStruct();
 	reader->readStructure(dbStruct);
 
-	OutputStatement *statement = new OutputStatement();
+	StructureStatement *statement = new StructureStatement();
 	AccessWriter* write = new AccessWriter();
 	write->writeStructure(dbStruct, statement);
+
+	char* path = "Ducbx_NEW";
+	AccessStatementExecutor *msAccess = new AccessStatementExecutor();
+	msAccess->init(path);
+	msAccess->executeDbStructureStatement(statement);
 	////End Test////
 
 	CDBConverterDlg dlg;

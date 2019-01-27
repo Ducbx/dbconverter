@@ -267,7 +267,7 @@ bool SQLiteReader::readStructure(DatabaseStruct* data_info)
 }
 
 //Get record
-bool SQLiteReader::readData(Table)
+bool SQLiteReader::readData(const QueryModel& query, std::vector<Record*>& dataList)
 {
 	return false;
 }

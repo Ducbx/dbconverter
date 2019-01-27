@@ -105,7 +105,7 @@ bool AccessReader::convertType(const std::string &type, CommonDataType &out)
 }
 
 //Get record information 
-bool AccessReader::readData(Table)
+bool AccessReader::readData(const QueryModel& query, std::vector<Record*>& dataList)
 {
 	return false;
 }

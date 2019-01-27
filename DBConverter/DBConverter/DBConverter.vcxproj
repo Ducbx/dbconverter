@@ -52,7 +52,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
     </ClCompile>
     <Link>
@@ -101,10 +101,10 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AccessOutputWriter.h" />
+    <ClInclude Include="AccessStatementExecutor.h" />
     <ClInclude Include="AccessReader.h" />
     <ClInclude Include="AccessWriter.h" />
-    <ClInclude Include="BaseOutputWriter.h" />
+    <ClInclude Include="BaseStatementExecutor.h" />
     <ClInclude Include="BaseDbWriter.h" />
     <ClInclude Include="CommonDefs.h" />
     <ClInclude Include="DatabaseStruct.h" />
@@ -114,9 +114,11 @@
     <ClInclude Include="Field.h" />
     <ClInclude Include="ForeignKey.h" />
     <ClInclude Include="Index.h" />
-    <ClInclude Include="OutputStatement.h" />
+    <ClInclude Include="RecordStatement.h" />
+    <ClInclude Include="StructureStatement.h" />
     <ClInclude Include="PrimaryKey.h" />
     <ClInclude Include="Procedure.h" />
+    <ClInclude Include="QueryModel.h" />
     <ClInclude Include="Record.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="sqlite3.h" />
@@ -133,7 +135,7 @@
     <ClInclude Include="View.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="AccessOutputWriter.cpp" />
+    <ClCompile Include="AccessStatementExecutor.cpp" />
     <ClCompile Include="AccessReader.cpp" />
     <ClCompile Include="AccessWriter.cpp" />
     <ClCompile Include="DBConverter.cpp" />

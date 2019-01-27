@@ -12,16 +12,16 @@ AccessWriter::~AccessWriter()
 }
 
 
-bool AccessWriter::writeStructure( DatabaseStruct* &databaseStruct, OutputStatement* &outputStatement)
+bool AccessWriter::writeStructure( DatabaseStruct* &databaseStruct, StructureStatement* &outputStatement)
 {
 	std::string tableState = "";
 	std::string indexState = "";
-	for (int table = 0; table < databaseStruct->tables.size(); table++)
+	for (unsigned int table = 0; table < databaseStruct->tables.size(); table++)
 	{
 		writeTableInfo(databaseStruct->tables[table], tableState);
 		outputStatement->tableStatement.push_back(tableState);
 	}
-	for (int index = 0; index < databaseStruct->indexs.size(); index++)
+	for (size_t index = 0; index < databaseStruct->indexs.size(); index++)
 	{
 		writeIndex(databaseStruct->indexs[index], indexState);
 		outputStatement->indexStatement.push_back(indexState);
@@ -36,6 +36,8 @@ bool AccessWriter::writeTableInfo( Table* &dataTable, std::string& tableStatemen
 	std::string fieldstate = "";
 	std::string primaryKey = "";
 	statement += "create table ";
+
+	// check dataTable->name vs ACCESS keyword
 	statement += dataTable->name;
 	statement += " ( ";
 	for (size_t field = 0; field < dataTable->fields.size(); field++)
@@ -44,6 +46,8 @@ bool AccessWriter::writeTableInfo( Table* &dataTable, std::string& tableStatemen
 		{
 			fieldstate += ",";
 		}
+
+		// check dataTable->fields[field]->name dataTable->fields[field]->name
 		fieldstate += dataTable->fields[field]->name;
 		fieldstate += " ";
 		fieldstate += getDataType(dataTable->fields[field]->dataType);
@@ -121,7 +125,7 @@ std::string AccessWriter::getDataType(const CommonDataType& commonDataType)
 	return dataType;
 }
 
-bool AccessWriter::writeData(Table)
+bool AccessWriter::writeData(std::vector<Record> records, RecordStatement* recordStatement)
 {
 	return false;
 }
