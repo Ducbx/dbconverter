@@ -269,5 +269,28 @@ bool SQLiteReader::readStructure(DatabaseStruct* data_info)
 //Get record
 bool SQLiteReader::readData(const QueryModel& query, std::vector<Record*>& dataList)
 {
-	return false;
+	if (!query.table)
+	{
+		std::cout << "Table is null";
+		return false;
+	}
+
+	SQLiteDataStruct *data = new SQLiteDataStruct();
+	std::string skipStr = query.skip + "";
+	std::string countStr = query.count + "";
+	std::string recordQuery = "SELECT * FROM " + query.table->name + " LIMIT " + skipStr + "," + countStr;
+	m_db->executeQuery(recordQuery.c_str(), data);
+
+	// Parse data
+	for (int i = 0; i < data->data.size(); i++)
+	{
+		Record* record = new Record();
+		for (int j = 0; j < data->data[i].size(); j++)
+		{
+			record->dataMap.insert(data->columns[j], data->data[i][j]);
+		}
+		dataList.push_back(record);
+	}
+	delete data;
+	return true;
 }

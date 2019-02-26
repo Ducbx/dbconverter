@@ -25,6 +25,9 @@
     <Filter Include="Utilities">
       <UniqueIdentifier>{527dbbf9-f2fb-4567-b6c3-2c7c2a7d40a5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Record">
+      <UniqueIdentifier>{2301f49d-8270-41e1-a290-3c0b45b7cb33}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -126,6 +129,18 @@
     <ClInclude Include="AccessStatementExecutor.h">
       <Filter>MS_Access</Filter>
     </ClInclude>
+    <ClInclude Include="RecordProducer.h">
+      <Filter>Record</Filter>
+    </ClInclude>
+    <ClInclude Include="StatementQueue.h">
+      <Filter>Record</Filter>
+    </ClInclude>
+    <ClInclude Include="StatementConsumer.h">
+      <Filter>Record</Filter>
+    </ClInclude>
+    <ClInclude Include="semaphore.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DBConverter.cpp">
@@ -157,6 +172,15 @@
     </ClCompile>
     <ClCompile Include="AccessStatementExecutor.cpp">
       <Filter>MS_Access</Filter>
+    </ClCompile>
+    <ClCompile Include="RecordProducer.cpp">
+      <Filter>Record</Filter>
+    </ClCompile>
+    <ClCompile Include="StatementQueue.cpp">
+      <Filter>Record</Filter>
+    </ClCompile>
+    <ClCompile Include="StatementConsumer.cpp">
+      <Filter>Record</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

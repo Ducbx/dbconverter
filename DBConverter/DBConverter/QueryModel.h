@@ -1,12 +1,13 @@
 #pragma once
 
+#include "Table.h"
 #include <iostream>
 struct QueryModel
 {
-	std::string tableName; // query from this table name
+	Table* table; // query from this table
 	
-	// fir paging
-	int limit; // number of record want to take
+	// for paging
+	int count; // number of record want to take
 	int skip;  // number of record to skip
 	int lastDataId; // for paging uisng id, because id field is automatically indexed by database
 };

@@ -1,12 +1,16 @@
 #pragma once
 #include<iostream>
 #include<vector>
-
 struct SQLiteDataStruct
 {
 	std::vector<std::string> columns;
 	std::vector<std::vector<std::string>> data;
 	
+	~SQLiteDataStruct()
+	{
+		reset();
+	}
+
 	void reset()
 	{
 		data.clear();
