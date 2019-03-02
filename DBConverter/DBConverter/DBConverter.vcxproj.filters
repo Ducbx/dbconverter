@@ -141,6 +141,9 @@
     <ClInclude Include="semaphore.h">
       <Filter>Utilities</Filter>
     </ClInclude>
+    <ClInclude Include="DbRecordConvertor.h">
+      <Filter>Record</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DBConverter.cpp">
@@ -180,6 +183,9 @@
       <Filter>Record</Filter>
     </ClCompile>
     <ClCompile Include="StatementConsumer.cpp">
+      <Filter>Record</Filter>
+    </ClCompile>
+    <ClCompile Include="DbRecordConvertor.cpp">
       <Filter>Record</Filter>
     </ClCompile>
   </ItemGroup>

@@ -10,6 +10,7 @@
 #include "AccessWriter.h"
 #include "StructureStatement.h"
 #include "AccessStatementExecutor.h"
+#include "DbRecordConvertor.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -88,13 +89,21 @@ BOOL CDBConverterApp::InitInstance()
 	reader->readStructure(dbStruct);
 
 	StructureStatement *statement = new StructureStatement();
-	AccessWriter* write = new AccessWriter();
-	write->writeStructure(dbStruct, statement);
+
+	AccessWriter* writer = new AccessWriter();
+	writer->writeStructure(dbStruct, statement);
 
 	char* path = "Ducbx_NEW";
 	AccessStatementExecutor *msAccess = new AccessStatementExecutor();
 	msAccess->init(path);
 	msAccess->executeDbStructureStatement(statement);
+
+	StatementQueue* queue = new StatementQueue(100);
+	RecordProducer* producer = new RecordProducer(reader, writer, queue);
+	StatementConsumer* consumer = new StatementConsumer(msAccess, queue);
+	DbRecordConvertor recordConvertor(producer, consumer, queue);
+	recordConvertor.start(dbStruct->tables);
+
 	////End Test////
 
 	CDBConverterDlg dlg;

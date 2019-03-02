@@ -8,7 +8,7 @@ class  BaseDbWriter
 {
 public:
 	virtual bool writeStructure(DatabaseStruct* &databaseStruct, StructureStatement* &outputStatement) = 0;
-	virtual bool writeData(std::vector<Record> records, RecordStatement* recordStatement) = 0;
+	virtual bool writeData(std::string tableName, std::vector<Record*> records, RecordStatement* recordStatement) = 0;
 };
 
 

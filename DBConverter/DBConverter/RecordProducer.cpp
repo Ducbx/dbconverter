@@ -14,13 +14,19 @@ RecordProducer::~RecordProducer()
 void RecordProducer::startGetRecord(Table* table)
 {
 	// loop get record tu table cua input db
-	//m_reader->readData()
-
-	//std::vector<Record*> dataList;
-	//m_reader->readData(,dataList);
-	
-	//RecordStatement* statement = nullptr;
-	//m_writer->writeData(dataList, statement);
-
-	//m_queue->enqueue(statement);
+	QueryModel *query = new QueryModel();
+	query->table = table;
+	std::vector<Record*> dataList;
+	int count = 0;
+	do
+	{
+		m_reader->readData(*query, dataList);
+		count = dataList.size();
+		query->skip += query->count;
+		RecordStatement* statement = nullptr;
+		m_writer->writeData(table->name, dataList, statement);
+		dataList.clear();
+		m_queue->enqueue(statement);
+	}
+	while (count == query->count);
 }

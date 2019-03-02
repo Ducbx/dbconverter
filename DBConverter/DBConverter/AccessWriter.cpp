@@ -125,7 +125,37 @@ std::string AccessWriter::getDataType(const CommonDataType& commonDataType)
 	return dataType;
 }
 
-bool AccessWriter::writeData(std::vector<Record> records, RecordStatement* recordStatement)
+bool AccessWriter::writeData(std::string tableName, std::vector<Record*> records, RecordStatement* recordStatement)
 {
+	std::string statement = "INSERT INTO " + tableName + "(";
+	for (int record = 0; record < records.size(); record++)
+	{
+		std::map<std::string, std::string>& recordData = records.at(record)->dataMap;
+		if (record == 0)
+		{
+			for (std::map<std::string, std::string>::iterator it = recordData.begin(); it != recordData.end(); ++it) {
+				if (it != recordData.begin())
+				{
+					statement += ", ";
+				}
+				statement += it->first;
+			}
+			statement += ") VALUES ";
+		}
+		if (record != 0)
+		{
+			statement += ",";
+		}
+		statement += " ( ";
+		for (std::map<std::string, std::string>::iterator it = recordData.begin(); it != recordData.end(); ++it) {
+			if (it != recordData.begin())
+			{
+				statement += ", ";
+			}
+			statement += it->second;
+		}
+		statement += " ) ";
+	}
+	recordStatement->statement = statement;
 	return false;
 }

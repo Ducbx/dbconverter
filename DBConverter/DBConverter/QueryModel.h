@@ -10,4 +10,11 @@ struct QueryModel
 	int count; // number of record want to take
 	int skip;  // number of record to skip
 	int lastDataId; // for paging uisng id, because id field is automatically indexed by database
+
+	QueryModel():
+		count(100),
+		skip(0)
+	{
+
+	}
 };

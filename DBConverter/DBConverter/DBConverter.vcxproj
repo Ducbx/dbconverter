@@ -111,6 +111,7 @@
     <ClInclude Include="DBConverter.h" />
     <ClInclude Include="DBConverterDlg.h" />
     <ClInclude Include="BaseDbReader.h" />
+    <ClInclude Include="DbRecordConvertor.h" />
     <ClInclude Include="Field.h" />
     <ClInclude Include="ForeignKey.h" />
     <ClInclude Include="Index.h" />
@@ -144,6 +145,7 @@
     <ClCompile Include="AccessWriter.cpp" />
     <ClCompile Include="DBConverter.cpp" />
     <ClCompile Include="DBConverterDlg.cpp" />
+    <ClCompile Include="DbRecordConvertor.cpp" />
     <ClCompile Include="RecordProducer.cpp" />
     <ClCompile Include="sqlite3.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Default</CompileAs>

@@ -79,5 +79,15 @@ bool AccessStatementExecutor::executeDbStructureStatement(const StructureStateme
 
 bool AccessStatementExecutor::executeRecordStatement(const RecordStatement* recordStatement)
 {
-	return false;
+	CString sqlInsertRecord = recordStatement->statement.c_str();
+	try
+	{
+		m_db->Execute(sqlInsertRecord);
+	}
+	catch (CDaoException* ex)
+	{
+		printf("%s", ex->m_pErrorInfo->m_strDescription);
+		return false;
+	}
+	return true;
 }
