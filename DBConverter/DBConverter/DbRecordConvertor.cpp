@@ -6,13 +6,18 @@ DbRecordConvertor::DbRecordConvertor(RecordProducer* producer, StatementConsumer
 {
 	this->m_consumer = consumer;
 	this->m_producer = producer;
-	m_queue = queue;
+	this->m_queue = queue;
+}
+
+DbRecordConvertor::~DbRecordConvertor()
+{
+
 }
 
 bool DbRecordConvertor::start(std::vector<Table*> tblList)
 {
 	// start consumer on other thread
-	std::thread consumerThread(&DbRecordConvertor::startConsumer);
+	std::thread consumerThread(&DbRecordConvertor::startConsumer, this);
 
 	// start producer on this main thread
 	startProducer(tblList);
@@ -30,6 +35,8 @@ bool DbRecordConvertor::start(std::vector<Table*> tblList)
 	m_consumer->stop();
 
 	consumerThread.join();
+
+	return false;
 }
 
 void DbRecordConvertor::startConsumer()
@@ -39,7 +46,7 @@ void DbRecordConvertor::startConsumer()
 
 void DbRecordConvertor::startProducer(std::vector<Table*> tblList)
 {
-	for (int i = 0; i < tblList.size(); i++)
+	for (size_t i = 0; i < tblList.size(); i++)
 	{
 		m_producer->startGetRecord(tblList.at(i));
 	}

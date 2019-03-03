@@ -128,7 +128,7 @@ std::string AccessWriter::getDataType(const CommonDataType& commonDataType)
 bool AccessWriter::writeData(std::string tableName, std::vector<Record*> records, RecordStatement* recordStatement)
 {
 	std::string statement = "INSERT INTO " + tableName + "(";
-	for (int record = 0; record < records.size(); record++)
+	for (size_t record = 0; record < records.size(); record++)
 	{
 		std::map<std::string, std::string>& recordData = records.at(record)->dataMap;
 		if (record == 0)

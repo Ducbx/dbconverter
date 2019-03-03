@@ -282,12 +282,12 @@ bool SQLiteReader::readData(const QueryModel& query, std::vector<Record*>& dataL
 	m_db->executeQuery(recordQuery.c_str(), data);
 
 	// Parse data
-	for (int i = 0; i < data->data.size(); i++)
+	for (size_t i = 0; i < data->data.size(); i++)
 	{
 		Record* record = new Record();
-		for (int j = 0; j < data->data[i].size(); j++)
+		for (size_t j = 0; j < data->data[i].size(); j++)
 		{
-			record->dataMap.insert(data->columns.at(j), data->data[i][j]);
+			record->dataMap.insert({ data->columns.at(j), data->data[i][j] });
 		}
 		dataList.push_back(record);
 	}
